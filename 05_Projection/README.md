@@ -16,7 +16,7 @@ db.users.find(
 ```
 - 0  -> Exclude Field 
 <br>
-1  -> Include Fields
+- 1  -> Include Fields
 
 
 - _id is included by default.
