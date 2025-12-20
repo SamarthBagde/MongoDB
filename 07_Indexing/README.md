@@ -55,6 +55,8 @@ MongoDB automatically creates an index on _id
 { _id: 1 }
 ```
 
+<hr>
+
 ### 2. Single Field Index
 
 Index on one field
@@ -63,6 +65,25 @@ Index on one field
 db.users.createIndex({ age: 1 })   // ascending
 db.users.createIndex({ age: -1 })  // descending
 ```
+
+<b>In Mongoose</b>
+
+```
+Schema
+
+const userSchema = new mongoose.Schema({
+  email: { type: String, index: true }
+});
+
+```
+or
+
+```
+db.users.createIndex({ email: 1 })
+```
+
+<hr>
+
 
 ### 3. Compound Index
 
@@ -85,6 +106,20 @@ Works For Queries
 { age: 22 }                ❌
 ```
 
+
+<b>In Mongoose</b>
+
+```
+const userSchema = new mongoose.Schema({
+  city: String,
+  age: Number
+});
+
+userSchema.index({ city: 1, age: 1 });
+```
+<hr>
+
+
 ### 4. Text Index
 
 Used for full-text search <br>
@@ -105,6 +140,18 @@ db.posts.find({
 })
 ```
 
+<b>In Mongoose</b>
+
+```
+const postSchema = new mongoose.Schema({
+  title: String,
+  content: String
+});
+
+postSchema.index({ title: "text", content: "text" });
+```
+<hr>
+
 ### 5. Partial Index
 
 Partial index allow you to index only the documents that match specified filter condition reducing the size and imporving performance for target queries
@@ -117,6 +164,7 @@ db.user.createIndex(
 ```
 
 <b> It will create index on age for those user whose age is greater than 18</b>
+<hr>
 
 
 ### 6. TTL Index
@@ -132,3 +180,5 @@ db.sessions.createIndex(
 ```
 
 This will create index on createdAt field and delete documents aftre 1 hour.
+
+ 
