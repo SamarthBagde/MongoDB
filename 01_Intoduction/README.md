@@ -49,3 +49,62 @@ Database
       ├── Document 4
 ```
 
+<hr>
+
+## Schema vs Schemaless DB
+
+<b>Schema based DB : </b>
+
+A schema is a formal blueprint that defines how data must be stored in a database.
+
+- Data must follow the structure
+
+- Invalid data is rejected
+
+- Structure is known in advance
+
+
+<b>No Schema based DB (Schemaless) :</b>
+
+Schemaless means:
+
+- No predefined structure is enforced by the database
+
+- Each record/document can have different fields
+
+- Schema is defined at runtime, not beforehand
+
+<br>
+<br>
+
+
+
+| Aspect         | Schema         | Schemaless        |
+| -------------- | -------------- | ----------------- |
+| Structure      | Fixed          | Flexible          |
+| Enforcement    | Database level | Application level |
+| Change cost    | High           | Low               |
+| Predictability | High           | Low               |
+
+<hr>
+
+## Advantages & Disadvantages
+
+<b>Advantages</b>
+
+1. Schema Flexibility
+2. High Performance - Optimized for fast reads and writes
+3. Horizontal Scalability (Sharding)
+4. Powerful Aggregation Framework
+5. Built-in Replication (High Availability)
+6. ACID Transactions Support (MongoDB 4.0+)
+7. Cloud-Friendly (MongoDB Atlas)
+
+<b>Disadvantages</b>
+
+1. No Enforced Schema by Default
+2. Higher Memory Consumption
+3. Not Ideal for Complex Joins
+4. Poor Choice for Highly Structured Data
+
+<hr>

@@ -132,3 +132,101 @@ db.users.deleteMany({ isActive: false })
 
 <br>
 <hr>
+
+## 7. Regex Queries
+
+A regex (regular expression) query allows you to search text fields using patterns instead of exact matches.
+
+### Regex Symbols and examples: 
+
+1. ^ — Start of String. Matches the beginning of a string
+
+```
+db.users.find({
+  name: { $regex: "^Sam", $options: "i" }
+})
+```
+
+2. $ — End of String. Matches the end of a string
+
+```
+db.users.find({
+  email: { $regex: "@gmail.com$", $options: "i" }
+})
+```
+
+3. . — Any Single Character. Matches exactly one character (except newline)
+
+```
+/a.b/
+
+
+Matches :
+
+"acb"
+"a1b"
+```
+```
+db.users.find({
+  name: { $regex: "S.m" }
+})
+```
+
+
+4. \* — Zero or More. Matches 0 or more occurrences of previous character
+
+```
+/bo*/
+
+Matches :
+
+"b"
+"bo"
+"booooo"
+```
+```
+db.products.find({
+  description: { $regex: "lap*" }
+})
+```
+
+
+5. \+ — One or More. Matches 1 or more occurrences
+```
+/bo+/
+
+Matches :
+
+"bo"
+"booo"
+```
+```
+db.reviews.find({
+  comment: { $regex: "bo+" }
+})
+```
+
+6. ? — Zero or One. Previous character is optional
+
+```
+/colou?r/
+
+Matches : 
+
+"color"
+"colour"
+```
+
+```
+db.products.find({
+  description: { $regex: "colou?r" }
+})
+```
+
+7. | — OR Operator. Matches either pattern
+
+```
+db.products.find({
+  name: { $regex: "phone|laptop", $options: "i" }
+})
+```
