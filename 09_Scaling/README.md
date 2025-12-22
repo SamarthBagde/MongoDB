@@ -20,7 +20,16 @@ code snippet for replication in mongo DB
 ```
 mongod --port "PORT" --dbpath "YOUR_DB_DATA_PATH" --replSet "REPLICA_SET_INSTANCE_NAME" // Start MongoDB with Replica Set Configuration
 
+Example:
+
+mongod --replSet rs0 --port 27017 --dbpath /data/rs1
+mongod --replSet rs0 --port 27018 --dbpath /data/rs2
+mongod --replSet rs0 --port 27019 --dbpath /data/rs3
+
+
 rs.initiate() // initiate the replica set
+rs.status()
+rs.isMaster() // to check who is primary
 ```
 
 # Shrading
