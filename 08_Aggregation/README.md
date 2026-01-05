@@ -120,8 +120,9 @@ Groups documents and applies aggregate functions
 ```
 {
   $group: {
-    _id: "$field",
-    result: { $sum: "$value" }
+    _id: <grouping key>,
+    field1: { <accumulator>: <expression> },
+    field2: { <accumulator>: <expression> }
   }
 }
 ```
@@ -140,7 +141,23 @@ db.users.aggregate([
 ])
 ```
 
-<b>Common Operators</b>
+
+### Core properties of $group
+
+a) _id :
+
+- Defines how documents are grouped
+- Documents with the same _id value go into the same group
+- _id can be:
+
+  - A single field
+  - Multiple fields (composite key)
+  - null (groups all documents together)
+
+b) Accumulator fields :
+
+- Accumulators calculate values per group.
+- Common accumulators:
 
 | Operator    | Description        |
 | ----------- | ------------------ |
@@ -153,6 +170,15 @@ db.users.aggregate([
 | `$push`     | Push all values    |
 | `$addToSet` | Push unique values |
 
+
+### Note : 
+- $group does <b>not preserve original fields</b> unless you explicitly add them
+- Output documents contain only:
+
+   - _id
+   - Aggregated fields
+- Order is not guaranteed
+- Often used after $match to reduce data size
 
 <hr>
 
